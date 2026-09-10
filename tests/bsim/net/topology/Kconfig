@@ -1,0 +1,28 @@
+# Copyright (c) 2026 Nordic Semiconductor ASA
+# SPDX-License-Identifier: Apache-2.0
+
+mainmenu "BabbleSim OpenThread topology test"
+
+choice TOPOLOGY_BSIM_ROLE
+	prompt "BabbleSim topology node role"
+	default TOPOLOGY_BSIM_ROLE_PINGER
+
+config TOPOLOGY_BSIM_ROLE_PINGER
+	bool "pinger (sends ICMP echo requests)"
+
+config TOPOLOGY_BSIM_ROLE_RESPONDER
+	bool "responder (ICMP echo replies only)"
+
+endchoice
+
+config TOPOLOGY_BSIM_PING_INTERVAL_MS
+	int "Ping interval in milliseconds (pinger role)"
+	default 1000
+	depends on TOPOLOGY_BSIM_ROLE_PINGER
+
+config TOPOLOGY_BSIM_PASS_THRESHOLD
+	int "Minimum ICMP echo replies required to pass (pinger role)"
+	default 5
+	depends on TOPOLOGY_BSIM_ROLE_PINGER
+
+source "Kconfig.zephyr"
