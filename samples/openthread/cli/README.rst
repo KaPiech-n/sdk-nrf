@@ -617,6 +617,15 @@ If the device is connected to a `Power Profiler Kit II (PPK2)`_, you can perform
 
 See :ref:`thread_power_consumption` for more information.
 
+.. _ot_cli_sample_bsim:
+
+BabbleSim (nrf52_bsim)
+======================
+
+The sample can be built for BabbleSim ``nrf52_bsim`` using :file:`boards/nrf52_bsim.conf` and the **sdk-nrfxlib** BabbleSim 802.15.4 changes.
+
+For BabbleSim build and test instructions, see :ref:`ncs_babblesim_openthread_test` in :file:`nrf/config/babblesim/README.rst`.
+
 Dependencies
 ************
 

@@ -1,0 +1,23 @@
+common:
+  depends_on: bsim
+  harness: bsim
+  harness_config:
+    fixture:
+      - bsim_multi_test
+  platform_allow:
+    - nrf52_bsim/native
+  tags:
+    - net
+    - openthread
+
+tests:
+  net.topology.ping.openthread:
+    extra_args: EXTRA_CONF_FILE="overlay-pinger.conf"
+    harness_config:
+      bsim_exe_name: tests_bsim_net_topology_prj_conf_overlay-pinger_conf
+      tests_scripts:
+        - tests_scripts/topology_ping_ot.sh
+    required_applications:
+      - application: test.net.topology.ping.openthread.responder.bsim
+        path: $ZEPHYR_BASE/tests/bsim/net/topology
+        extra_args: EXTRA_CONF_FILE="overlay-responder.conf"
